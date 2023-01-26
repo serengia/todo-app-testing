@@ -28,5 +28,8 @@
     "@jest/globals": "^29.4.0",
     "jest-config": "^29.4.0",
     "jsdom": "^21.1.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
