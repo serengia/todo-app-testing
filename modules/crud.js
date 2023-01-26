@@ -108,4 +108,9 @@ class Crud {
   }
 }
 
+const crud = new Crud();
+
+export const add = crud.addTodo();
+export const remove = crud.removeItem();
+
 export default Crud;
