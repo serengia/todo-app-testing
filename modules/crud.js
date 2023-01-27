@@ -87,12 +87,12 @@ class Crud {
     localStorage.setItem("todos", JSON.stringify([...updatedTodos]));
   }
 
-  updateItem(id, text, todosArr) {
-    const todos = todosArr;
+  updateItem(id, text, todos) {
+    // const todos = todosArr;
     const itemToUpdate = todos.find((todoObj) => todoObj.id === id);
 
     const initialText = itemToUpdate?.description;
-    if (text === initialText) return;
+    // if (text === initialText) return;
 
     itemToUpdate.description = text;
 
@@ -101,7 +101,7 @@ class Crud {
 
     todos[itemToUpdateIndex] = itemToUpdate;
 
-    return todos;
+    return [...todos];
   }
 
   updateTodo(id, text) {
