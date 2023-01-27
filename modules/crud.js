@@ -89,7 +89,7 @@ class Crud {
 
   updateItem(id, text, todos) {
     // const todos = todosArr;
-    const itemToUpdate = todos.find((todoObj) => todoObj.id === id);
+    const itemToUpdate = todos?.find((todoObj) => todoObj.id === id);
 
     const initialText = itemToUpdate?.description;
     // if (text === initialText) return;
