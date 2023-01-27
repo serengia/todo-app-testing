@@ -44,16 +44,22 @@ class Crud {
     return [...nodes];
   }
 
-  //   Add todo
-  addTodo(description, complete = false) {
-    const todoArr = this.getToDos();
-
+  addItem(description, complete = false) {
     const todoObj = {
       description,
-      index: todoArr.length,
       complete,
       id: Date.now().toString(),
     };
+
+    return todoObj;
+  }
+
+  //   Add todo
+  addTodo(description, complete = false) {
+    const todoListContainer = document.querySelector(".todo-list");
+    const todoArr = this.getToDos();
+
+    const todoObj = this.addItem(description, complete);
 
     todoArr.push({ ...todoObj });
 
@@ -61,17 +67,22 @@ class Crud {
     localStorage.setItem("todos", JSON.stringify(todoArr));
 
     const todoMarkup = this.getTodoItemMarkup({ ...todoObj });
-    this.todoListContainer.insertAdjacentHTML("beforeend", todoMarkup);
+    todoListContainer.insertAdjacentHTML("beforeend", todoMarkup);
   }
 
-  removeItem(id) {
-    const todos = this.getToDos();
+  deleteItem(id, todos) {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
 
     updatedTodos.forEach((obj, i) => {
       obj.index = i;
     });
 
+    return ["success", updatedTodos];
+  }
+
+  removeItem(id) {
+    const todos = this.getToDos();
+    const updatedTodos = this.deleteItem(id, todos)[1];
     // Save updated list to local
     localStorage.setItem("todos", JSON.stringify([...updatedTodos]));
   }

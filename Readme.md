@@ -56,7 +56,9 @@
 
 ## Getting Started <a name="getting-started"></a>
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy follow the following steps.
+
+Clone the repo: clone `https://github.com/serengia/todo-app-testing.git`
 
 ### Install <a name="install"></a>
 
@@ -64,16 +66,12 @@ To get a local copy up and running follow these simple example steps.
 npm install
 ```
 
-To build a webpack bundle file,run
+### Running tests
+
+To run test, run the following command:
 
 ```js
-npm run build
-```
-
-If you want to build and run the local server, run
-
-```js
-npm start
+npm test
 ```
 
 ## Author <a name="author"></a>

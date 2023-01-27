@@ -23,7 +23,7 @@ const todoActions = () => {
     e.target.value = "";
   });
 
-  addTodoIcon.addEventListener("click", () => {
+  addTodoIcon?.addEventListener("click", () => {
     const { value } = addTodoInput;
     if (!value) return;
 
@@ -50,7 +50,7 @@ const todoActions = () => {
   });
 
   // Todo item actions from Icons
-  todoListContainer.addEventListener("click", (e) => {
+  todoListContainer?.addEventListener("click", (e) => {
     const clickedIcon = e.target.closest(".item-icon");
 
     if (!clickedIcon) return;
