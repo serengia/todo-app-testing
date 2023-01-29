@@ -87,12 +87,9 @@ class Crud {
     localStorage.setItem("todos", JSON.stringify([...updatedTodos]));
   }
 
-  updateTodo(id, text) {
-    const todos = this.getToDos();
-    const itemToUpdate = todos.find((todoObj) => todoObj.id === id);
-
-    const initialText = itemToUpdate?.description;
-    if (text === initialText) return;
+  updateItem(id, text, todos) {
+    // const todos = todosArr;
+    const itemToUpdate = todos?.find((todoObj) => todoObj.id === id);
 
     itemToUpdate.description = text;
 
@@ -101,12 +98,18 @@ class Crud {
 
     todos[itemToUpdateIndex] = itemToUpdate;
 
-    // Save changes to local storage
-    localStorage.setItem("todos", JSON.stringify([...todos]));
+    return [...todos];
   }
 
-  updateTodoStatus(id, status) {
+  updateTodo(id, text) {
     const todos = this.getToDos();
+    const updatedTodos = this.updateItem(id, text, todos);
+    // Save changes to local storage
+    localStorage.setItem("todos", JSON.stringify([...updatedTodos]));
+  }
+
+  updateItemStatus(id, status, todosArr) {
+    const todos = todosArr;
     const itemToUpdate = [...todos].find((todoObj) => todoObj.id === id);
     itemToUpdate.complete = status;
 
@@ -115,7 +118,14 @@ class Crud {
 
     todos[itemToUpdateIndex] = itemToUpdate;
 
-    localStorage.setItem("todos", JSON.stringify([...todos]));
+    return todos;
+  }
+
+  updateTodoStatus(id, status) {
+    const todos = this.getToDos();
+    const updatedTodos = this.updateItem(id, status, todos);
+
+    localStorage.setItem("todos", JSON.stringify([...updatedTodos]));
   }
 }
 

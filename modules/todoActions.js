@@ -110,6 +110,7 @@ const todoActions = () => {
   clearAllBtn.addEventListener("click", () => {
     // Remove checked items from ui
     const listItems = new Crud().updateUI();
+
     if (listItems.length > 0) {
       listItems.forEach((node) => {
         if (node.dataset.complete.trim() === "true") {
